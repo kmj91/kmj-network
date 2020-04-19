@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <windows.h>
 #include <string.h>
 
@@ -18,9 +18,9 @@ public:
 	int Dequeue(char *chpData, int iSize);
 	int Peek(char *chpData, int iSize);
 
-	int GetBufferSize();		// ¹öÆÛ Å©±â
-	int	GetUseSize();			// »ç¿ëÁßÀÎ Å©±â
-	int GetFreeSize();			// ¹öÆÛ¿¡ ³²Àº Å©±â
+	int GetBufferSize();		// ë²„í¼ í¬ê¸°
+	int	GetUseSize();			// ì‚¬ìš©ì¤‘ì¸ í¬ê¸°
+	int GetFreeSize();			// ë²„í¼ì— ë‚¨ì€ í¬ê¸°
 	
 	int GetNotBrokenGetSize();
 	int GetNotBrokenPutSize();
@@ -30,11 +30,11 @@ public:
 
 	void ClearBuffer();
 
-	char *GetBufferPtr();		// ¹öÆÛ Æ÷ÀÎÅÍ
-	char *GetReadBufferPtr();	// front Æ÷ÀÎÅÍ
-	char *GetWriteBufferPtr();	// rear Æ÷ÀÎÅÍ
+	char *GetBufferPtr();		// ë²„í¼ í¬ì¸í„°
+	char *GetReadBufferPtr();	// front í¬ì¸í„°
+	char *GetWriteBufferPtr();	// rear í¬ì¸í„°
 
-	bool isEmpty();		// µ¥ÀÌÅÍ°¡ ÀÖ´ÂÁö ¾ø´ÂÁö true / false
+	bool isEmpty();		// ë°ì´í„°ê°€ ìˆëŠ”ì§€ ì—†ëŠ”ì§€ true / false
 
 	void LockExclusive();
 	void LockShared();
@@ -45,7 +45,7 @@ protected:
 	char * _queue;
 	int _rear;
 	int _front;
-	int _bufferSize;	// ¹öÆÛ Å©±â
+	int _bufferSize;	// ë²„í¼ í¬ê¸°
 
 	SRWLOCK _rock;
 };
@@ -89,7 +89,7 @@ int CRingBuffer::Enqueue(const char *chpData, int iSize) {
 		chpRear = &_queue[0];
 		cnt = iSize - cnt;
 		memcpy_s(chpRear, cnt, chpData, cnt);
-		chpData = chpData - iSize;				//Æ÷ÀÎÅÍ ÁÖ¼Ò ¿øÀ§Ä¡
+		chpData = chpData - iSize;				//í¬ì¸í„° ì£¼ì†Œ ì›ìœ„ì¹˜
 	}
 	else {
 		memcpy_s(chpRear, iSize, chpData, iSize);
@@ -115,7 +115,7 @@ int CRingBuffer::Dequeue(char *chpData, int iSize) {
 		chpFront = &_queue[0];
 		cnt = iSize - cnt;
 		memcpy_s(chpData, cnt, chpFront, cnt);
-		chpData = chpData - (iSize - cnt);		//Æ÷ÀÎÅÍ ÁÖ¼Ò ¿øÀ§Ä¡
+		chpData = chpData - (iSize - cnt);		//í¬ì¸í„° ì£¼ì†Œ ì›ìœ„ì¹˜
 	}
 	else {
 		memcpy_s(chpData, iSize, chpFront, iSize);
@@ -209,7 +209,7 @@ int CRingBuffer::GetNotBrokenGetSize() {
 
 /***********************
 	MoveFront
-	front ÀÌµ¿
+	front ì´ë™
 ************************/
 void CRingBuffer::MoveFront(int iSize) {
 	int iUseSize = GetUseSize();
@@ -222,7 +222,7 @@ void CRingBuffer::MoveFront(int iSize) {
 
 /***********************
 	MoveRear
-	rear ÀÌµ¿
+	rear ì´ë™
 ************************/
 int CRingBuffer::MoveRear(int iSize) {
 	int iFreeSize = GetFreeSize();
@@ -237,7 +237,7 @@ int CRingBuffer::MoveRear(int iSize) {
 
 /***********************
 	ClearBuffer
-	ÃÊ±âÈ­
+	ì´ˆê¸°í™”
 ************************/
 void CRingBuffer::ClearBuffer() {
 	_rear = 0;
@@ -246,7 +246,7 @@ void CRingBuffer::ClearBuffer() {
 
 /***********************
 	GetBufferPtr
-	¹öÆÛ Æ÷ÀÎÅÍ
+	ë²„í¼ í¬ì¸í„°
 ************************/
 char *CRingBuffer::GetBufferPtr() {
 	return &_queue[0];
@@ -254,7 +254,7 @@ char *CRingBuffer::GetBufferPtr() {
 
 /***********************
 	GetReadBufferPtr
-	front Æ÷ÀÎÅÍ ¸®ÅÏ
+	front í¬ì¸í„° ë¦¬í„´
 ************************/
 char *CRingBuffer::GetReadBufferPtr() {
 	return &_queue[_front];
@@ -262,7 +262,7 @@ char *CRingBuffer::GetReadBufferPtr() {
 
 /***********************
 	GetWriteBufferPtr
-	rear Æ÷ÀÎÅÍ ¸®ÅÏ
+	rear í¬ì¸í„° ë¦¬í„´
 ************************/
 char *CRingBuffer::GetWriteBufferPtr() {
 	return &_queue[_rear];
@@ -277,22 +277,22 @@ bool CRingBuffer::isEmpty() {
 	}
 }
 
-// ¾²±â ¶ô
+// ì“°ê¸° ë½
 void CRingBuffer::LockExclusive() {
 	AcquireSRWLockExclusive(&_rock);
 }
 
-// ÀĞ±â ¶ô
+// ì½ê¸° ë½
 void CRingBuffer::LockShared() {
 	AcquireSRWLockShared(&_rock);
 }
 
-// ÇØÁ¦
+// í•´ì œ
 void CRingBuffer::ReleaseLockExclusive() {
 	ReleaseSRWLockExclusive(&_rock);
 }
 
-// ÇØÁ¦
+// í•´ì œ
 void CRingBuffer::ReleaseLockShared() {
 	ReleaseSRWLockShared(&_rock);
 }

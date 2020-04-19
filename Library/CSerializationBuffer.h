@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <memory.h>
 
@@ -37,7 +37,7 @@ public:
 	}
 
 
-	//¹öÆÛ ÃÊ±âÈ­
+	//ë²„í¼ ì´ˆê¸°í™”
 	void ClearBuffer() {
 		_front = 0;
 		_rear = 0;
@@ -47,12 +47,12 @@ public:
 
 
 
-	//char »ğÀÔ
+	//char ì‚½ì…
 	CSerializationBuffer& operator<<(const char chData)
 	{
 		int typeSize = sizeof(char);
 		if (_rear >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -61,12 +61,12 @@ public:
 		return (*this);
 	}
 
-	//BYTE »ğÀÔ
+	//BYTE ì‚½ì…
 	CSerializationBuffer& operator<<(const unsigned char byData)
 	{
 		int typeSize = sizeof(unsigned char);
 		if (_rear >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -75,14 +75,14 @@ public:
 		return (*this);
 	}
 
-	//short »ğÀÔ
+	//short ì‚½ì…
 	CSerializationBuffer& operator<<(const short shData)
 	{
 		char *chpRear = &_queue[_rear];
 		int typeSize = sizeof(short);
 
 		if (_rear + typeSize >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -91,14 +91,14 @@ public:
 		return (*this);
 	}
 
-	//WORD »ğÀÔ
+	//WORD ì‚½ì…
 	CSerializationBuffer& operator<<(const unsigned short wData)
 	{
 		char *chpRear = &_queue[_rear];
 		int typeSize = sizeof(unsigned short);
 
 		if (_rear + typeSize >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -107,14 +107,14 @@ public:
 		return (*this);
 	}
 
-	//int »ğÀÔ
+	//int ì‚½ì…
 	CSerializationBuffer& operator<<(const int iData)
 	{
 		char *chpRear = &_queue[_rear];
 		int typeSize = sizeof(int);
 
 		if (_rear + typeSize >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -123,14 +123,14 @@ public:
 		return (*this);
 	}
 
-	//UINT »ğÀÔ
+	//UINT ì‚½ì…
 	CSerializationBuffer& operator<<(const unsigned int uiData)
 	{
 		char *chpRear = &_queue[_rear];
 		int typeSize = sizeof(unsigned int);
 
 		if (_rear + typeSize >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -139,14 +139,14 @@ public:
 		return (*this);
 	}
 
-	//long »ğÀÔ
+	//long ì‚½ì…
 	CSerializationBuffer& operator<<(const long lData)
 	{
 		char *chpRear = &_queue[_rear];
 		int typeSize = sizeof(long);
 
 		if (_rear + typeSize >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -155,14 +155,14 @@ public:
 		return (*this);
 	}
 
-	//DWORD »ğÀÔ
+	//DWORD ì‚½ì…
 	CSerializationBuffer& operator<<(const unsigned long dwData)
 	{
 		char *chpRear = &_queue[_rear];
 		int typeSize = sizeof(unsigned long);
 
 		if (_rear + typeSize >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			
 			return (*this);
 		}
@@ -171,14 +171,14 @@ public:
 		return (*this);
 	}
 
-	//INT64 »ğÀÔ
+	//INT64 ì‚½ì…
 	CSerializationBuffer& operator<<(const __int64 i64Data)
 	{
 		char *chpRear = &_queue[_rear];
 		int typeSize = sizeof(i64Data);
 
 		if (_rear + typeSize >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -187,14 +187,14 @@ public:
 		return (*this);
 	}
 
-	//UINT64 »ğÀÔ
+	//UINT64 ì‚½ì…
 	CSerializationBuffer& operator<<(const unsigned __int64 ui64Data)
 	{
 		char *chpRear = &_queue[_rear];
 		int typeSize = sizeof(ui64Data);
 
 		if (_rear + typeSize >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -203,14 +203,14 @@ public:
 		return (*this);
 	}
 
-	//WCHAR »ğÀÔ
+	//WCHAR ì‚½ì…
 	CSerializationBuffer& operator<<(wchar_t * const wchData)
 	{
 		int len = _msize(wchData);
 		char *chpRear = &_queue[_rear];
 
 		if (_front + len >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -221,12 +221,12 @@ public:
 
 	
 
-	//char Ãâ·Â
+	//char ì¶œë ¥
 	CSerializationBuffer& operator>>(char * const chData)
 	{
 		int typeSize = sizeof(char);
 		if (_front + typeSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			
 			return (*this);
 		}
@@ -235,12 +235,12 @@ public:
 		return (*this);
 	}
 
-	//BYTE Ãâ·Â
+	//BYTE ì¶œë ¥
 	CSerializationBuffer& operator>>(unsigned char * const byData)
 	{
 		int typeSize = sizeof(unsigned char);
 		if (_front + typeSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			
 			return (*this);
 		}
@@ -249,13 +249,13 @@ public:
 		return (*this);
 	}
 
-	//short Ãâ·Â
+	//short ì¶œë ¥
 	CSerializationBuffer& operator>>(short * const shData)
 	{
 		char *chpFront = &_queue[_front];
 		int typeSize = sizeof(short);
 		if (_front + typeSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			
 			return (*this);
 		}
@@ -264,13 +264,13 @@ public:
 		return (*this);
 	}
 
-	//WORD Ãâ·Â
+	//WORD ì¶œë ¥
 	CSerializationBuffer& operator>>(unsigned short * const wData)
 	{
 		char *chpFront = &_queue[_front];
 		int typeSize = sizeof(unsigned short);
 		if (_front + typeSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			
 			return (*this);
 		}
@@ -279,13 +279,13 @@ public:
 		return (*this);
 	}
 
-	//int Ãâ·Â
+	//int ì¶œë ¥
 	CSerializationBuffer& operator>>(int * const iData)
 	{
 		char *chpFront = &_queue[_front];
 		int typeSize = sizeof(int);
 		if (_front + typeSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			
 			return (*this);
 		}
@@ -294,13 +294,13 @@ public:
 		return (*this);
 	}
 
-	//UINT Ãâ·Â
+	//UINT ì¶œë ¥
 	CSerializationBuffer& operator>>(unsigned int * const uiData)
 	{
 		char *chpFront = &_queue[_front];
 		int typeSize = sizeof(unsigned int);
 		if (_front + typeSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -309,13 +309,13 @@ public:
 		return (*this);
 	}
 
-	//long Ãâ·Â
+	//long ì¶œë ¥
 	CSerializationBuffer& operator>>(long * const lData)
 	{
 		char *chpFront = &_queue[_front];
 		int typeSize = sizeof(long);
 		if (_front + typeSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			
 			return (*this);
 		}
@@ -324,13 +324,13 @@ public:
 		return (*this);
 	}
 
-	//DWORD Ãâ·Â
+	//DWORD ì¶œë ¥
 	CSerializationBuffer& operator>>(unsigned long  * const dwData)
 	{
 		char *chpFront = &_queue[_front];
 		int typeSize = sizeof(unsigned long);
 		if (_front + typeSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			
 			return (*this);
 		}
@@ -339,13 +339,13 @@ public:
 		return (*this);
 	}
 
-	//INT64 Ãâ·Â
+	//INT64 ì¶œë ¥
 	CSerializationBuffer& operator>>(__int64 * const i64Data)
 	{
 		char *chpFront = &_queue[_front];
 		int typeSize = sizeof(__int64);
 		if (_front + typeSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -354,13 +354,13 @@ public:
 		return (*this);
 	}
 
-	//UINT64 Ãâ·Â
+	//UINT64 ì¶œë ¥
 	CSerializationBuffer& operator>>(unsigned __int64 * const ui64Data)
 	{
 		char *chpFront = &_queue[_front];
 		int typeSize = sizeof(unsigned __int64);
 		if (_front + typeSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 
 			return (*this);
 		}
@@ -369,14 +369,14 @@ public:
 		return (*this);
 	}
 
-	//WCHAR Ãâ·Â
+	//WCHAR ì¶œë ¥
 	CSerializationBuffer& operator>>(wchar_t * const wchData)
 	{
 		int len = _msize(wchData);
 		char *chpFront = &_queue[_front];
 
 		if (_front + len > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			
 			return (*this);
 		}
@@ -385,32 +385,32 @@ public:
 		return (*this);
 	}
 
-	//WCHAR ¹®ÀÚ¿­ »ğÀÔ
+	//WCHAR ë¬¸ìì—´ ì‚½ì…
 	//void PutString(WCHAR * const wchData, int iSize) {
 	//	if (_front + iSize >= _bufferSize) {
-	//		//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+	//		//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 	//		throw;
 	//	}
 	//	memcpy_s(&_queue[_rear], iSize, wchData, iSize);
 	//	_rear = _rear + iSize;
 	//}
 
-	//WCHAR ¹®ÀÚ¿­ »ğÀÔ
+	//WCHAR ë¬¸ìì—´ ì‚½ì…
 	void WriteString(wchar_t * const wchData, int iSize) {
 		if (_rear + iSize >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			throw;
 		}
 		memcpy_s(&_queue[_rear], iSize, wchData, iSize);
 		_rear = _rear + iSize;
 	}
 
-	//WCHAR ¹®ÀÚ¿­ Ãâ·Â
+	//WCHAR ë¬¸ìì—´ ì¶œë ¥
 	void ReadString(wchar_t * wchData, int iSize) {
 		char *chpFront = &_queue[_front];
 
 		if (_front + iSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			throw;
 		}
 		memcpy_s(wchData, iSize, chpFront, iSize);
@@ -421,22 +421,22 @@ public:
 		//wchData = (WCHAR *)((char *)wchData - iSize);
 	}
 
-	//char ¹®ÀÚ¿­ »ğÀÔ
+	//char ë¬¸ìì—´ ì‚½ì…
 	void WriteString(char * const chData, int iSize) {
 		if (_rear + iSize >= _bufferSize) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			throw;
 		}
 		memcpy_s(&_queue[_rear], iSize, chData, iSize);
 		_rear = _rear + iSize;
 	}
 
-	//char ¹®ÀÚ¿­ Ãâ·Â
+	//char ë¬¸ìì—´ ì¶œë ¥
 	void ReadString(char * chData, int iSize) {
 		char *chpFront = &_queue[_front];
 
 		if (_front + iSize > _rear) {
-			//¿¡·¯ ³ª°Å³ª ¹öÆÛ »çÀÌÁî »õ·Î ÇÒ´ç
+			//ì—ëŸ¬ ë‚˜ê±°ë‚˜ ë²„í¼ ì‚¬ì´ì¦ˆ ìƒˆë¡œ í• ë‹¹
 			throw;
 		}
 		memcpy_s(chData, iSize, chpFront, iSize);
@@ -455,25 +455,14 @@ public:
 	void MoveFront(int iSize) {
 		int temp;
 
-		// 2018.06.28
-		// ¿Ö ÀÌµû±¸·Î ÇØ³ùÁö
-		//if (_front + iSize > _bufferSize)
-		//	iSize = iSize - ((_front + iSize) % _bufferSize);
-
 		temp = _front + iSize;
 
-		if (temp > _rear)
-			temp = _rear;
+		// ë²„í¼ ë²”ìœ„ ë²—ì–´ë‚˜ëŠ” ê²ƒ ì˜ˆì™¸ì²˜ë¦¬
+		if (temp >= _bufferSize)
+			temp = _bufferSize - 1;
 
-		if (_front + iSize < 0)
-			throw;
-
-		// 2018.06.28
-		// ¸µ¹öÆÛ ±×´ë·Î ±Ü¾î¿Í¼­ ÀÌ·±°Å ÀÖ´Âµí
-		// ¾²¸é¾ÈµÊ
-		//_front = (_front + iSize) % _bufferSize;
-		//_freeSize = _freeSize - iSize;
-		//_useSize = _useSize + iSize;
+		if (temp < 0)
+			temp = 0;
 
 		_front = temp;
 
@@ -485,27 +474,24 @@ public:
 
 		temp = _rear + iSize;
 
-		if (temp > _bufferSize)
-			temp = _bufferSize;
+		// ë²„í¼ ë²”ìœ„ ë²—ì–´ë‚˜ëŠ” ê²ƒ ì˜ˆì™¸ì²˜ë¦¬
+		if (temp >= _bufferSize)
+			temp = _bufferSize - 1;
 
-		// 2018.06.28
-		// ¸µ¹öÆÛ ±×´ë·Î ±Ü¾î¿Í¼­ ÀÌ·±°Å ÀÖ´Âµí
-		// ¾²¸é¾ÈµÊ
-		//_rear = (_rear + iSize) % _bufferSize;
-		//_freeSize = _freeSize - iSize;
-		//_useSize = _useSize + iSize;
+		if (temp < 0)
+			temp = 0;
 
 		_rear = temp;
 
 		return;
 	}
 
-	// »ç¿ëÁßÀÎ ¹öÆÛ »çÀÌÁî
+	// ì‚¬ìš©ì¤‘ì¸ ë²„í¼ ì‚¬ì´ì¦ˆ
 	int GetUseSize() {
 		return _rear - _front;
 	}
 
-	// ¹öÆÛ »çÀÌÁî
+	// ë²„í¼ ì‚¬ì´ì¦ˆ
 	int GetBufferSize() {
 		return _bufferSize;
 	}
@@ -515,7 +501,7 @@ protected:
 	char * _queue;
 	int _rear;
 	int _front;
-	int _bufferSize;	// ¹öÆÛ Å©±â
-	//int _freeSize;		// »ç¿ë °¡´É Å©±â
+	int _bufferSize;	// ë²„í¼ í¬ê¸°
+	//int _freeSize;		// ì‚¬ìš© ê°€ëŠ¥ í¬ê¸°
 	//int _useSize;
 };
