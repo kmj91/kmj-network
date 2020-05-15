@@ -10,26 +10,27 @@ public:
 	};
 
 public:
-	CSerializationBuffer() {
+	explicit CSerializationBuffer() : _rear(0), _front(0), _bufferSize(DEFAULT_SIZE) {
 		_queue = new char[DEFAULT_SIZE];
-		_bufferSize = DEFAULT_SIZE;
-		
-		_rear = 0;
-		_front = 0;
-		
-		//_freeSize = _bufferSize;
-		//_useSize = 0;
 	}
 
-	CSerializationBuffer(const int iSize) {
+	explicit CSerializationBuffer(const int iSize) : _rear(0), _front(0), _bufferSize(iSize) {
 		_queue = new char[iSize];
-		_bufferSize = iSize;
-		
-		_rear = 0;
-		_front = 0;
-		
-		//_freeSize = _bufferSize;
-		//_useSize = 0;
+	}
+
+	CSerializationBuffer(const CSerializationBuffer& rhs) : _rear(rhs._rear), _front(rhs._front), _bufferSize(rhs._bufferSize) {
+		_queue = new char[_bufferSize];
+
+		memcpy_s(_queue, _bufferSize, rhs._queue, _bufferSize);
+	}
+
+	CSerializationBuffer& operator=(const CSerializationBuffer& rhs) {
+		_bufferSize = rhs._bufferSize;
+		_rear = rhs._rear;
+		_front = rhs._front;
+		_queue = new char[_bufferSize];
+
+		memcpy_s(_queue, _bufferSize, rhs._queue, _bufferSize);
 	}
 
 	virtual ~CSerializationBuffer() {

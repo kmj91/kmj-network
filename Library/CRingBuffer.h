@@ -10,8 +10,11 @@ private:
 	};
 
 public:
-	CRingBuffer();
-	CRingBuffer(const int Size);
+	explicit CRingBuffer();
+	explicit CRingBuffer(const int Size);
+	CRingBuffer(const CRingBuffer& rhs);
+	CRingBuffer& operator=(const CRingBuffer& rhs);
+
 	~CRingBuffer();
 
 	int Enqueue(const char *chpData, int iSize);
@@ -52,20 +55,33 @@ protected:
 
 
 
-CRingBuffer::CRingBuffer() {
+CRingBuffer::CRingBuffer() : _rear(0), _front(0), _bufferSize(DEFAULT_SIZE) {
 	_queue = new char[DEFAULT_SIZE];
-	_rear = 0;
-	_front = 0;
-	_bufferSize = DEFAULT_SIZE;
 
 	InitializeSRWLock(&_rock);
 }
 
-CRingBuffer::CRingBuffer(const int Size) {
+CRingBuffer::CRingBuffer(const int Size) : _rear(0), _front(0), _bufferSize(Size) {
 	_queue = new char[Size];
-	_rear = 0;
-	_front = 0;
-	_bufferSize = Size;
+
+	InitializeSRWLock(&_rock);
+}
+
+CRingBuffer::CRingBuffer(const CRingBuffer& rhs) : _rear(rhs._rear), _front(rhs._front), _bufferSize(rhs._bufferSize) {
+	_queue = new char[_bufferSize];
+
+	memcpy_s(_queue, _bufferSize, rhs._queue, _bufferSize);
+
+	InitializeSRWLock(&_rock);
+}
+
+CRingBuffer& CRingBuffer::operator=(const CRingBuffer& rhs) {
+	_rear = rhs._rear;
+	_front = rhs._front;
+	_bufferSize = rhs._bufferSize;
+	_queue = new char[_bufferSize];
+
+	memcpy_s(_queue, _bufferSize, rhs._queue, _bufferSize);
 
 	InitializeSRWLock(&_rock);
 }
