@@ -84,6 +84,8 @@ CRingBuffer& CRingBuffer::operator=(const CRingBuffer& rhs) {
 	memcpy_s(_queue, _bufferSize, rhs._queue, _bufferSize);
 
 	InitializeSRWLock(&_rock);
+
+	return *this;
 }
 
 CRingBuffer::~CRingBuffer() {

@@ -31,6 +31,8 @@ public:
 		_queue = new char[_bufferSize];
 
 		memcpy_s(_queue, _bufferSize, rhs._queue, _bufferSize);
+
+		return *this;
 	}
 
 	virtual ~CSerializationBuffer() {
