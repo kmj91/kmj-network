@@ -79,9 +79,12 @@ CRingBuffer& CRingBuffer::operator=(const CRingBuffer& rhs) {
 	_rear = rhs._rear;
 	_front = rhs._front;
 	_bufferSize = rhs._bufferSize;
-	_queue = new char[_bufferSize];
 
+	// 자기 대입에 대한 안전 처리
+	char* pOriginal = _queue;
+	_queue = new char[_bufferSize];
 	memcpy_s(_queue, _bufferSize, rhs._queue, _bufferSize);
+	delete pOriginal;
 
 	InitializeSRWLock(&_rock);
 
