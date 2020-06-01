@@ -33,7 +33,7 @@ public:
 		char* pOriginal = _queue;
 		_queue = new char[_bufferSize];
 		memcpy_s(_queue, _bufferSize, rhs._queue, _bufferSize);
-		delete pOriginal;
+		delete[] pOriginal;
 
 		return *this;
 	}
